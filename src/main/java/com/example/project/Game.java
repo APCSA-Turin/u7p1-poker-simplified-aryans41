@@ -12,24 +12,22 @@ public class Game{
         } else if (player2Ranking > player1Ranking) {
             return "Player 2 wins!"; 
         } else {
-            HighCard(p1, p2);
+            return HighCard(p1, p2);
         }
-        return "Error!";
     }
 
     public static String HighCard (Player p1, Player p2) {
-        p1.sortAllCards();
-        p2.sortAllCards();
-        ArrayList<Card> p1Cards = p1.getAllCards();
-        ArrayList<Card> p2Cards = p2.getAllCards();
-        int index = p1.getAllCards().size() - 1;
-        int player1LastCardVal = Utility.getRankValue(p1Cards.get(index).getRank()); 
-        int player2LastCardVal = Utility.getRankValue(p2Cards.get(index).getRank()); 
-        while (player1LastCardVal != player2LastCardVal && index >= 0) {
+        p1.sortHand();
+        p2.sortHand();
+        ArrayList<Card> p1HandCards = p1.getHand();
+        ArrayList<Card> p2HandCards = p2.getHand(); 
+        int index = p1HandCards.size() - 1;
+        for (int i = index; i >= 0; i--) {
+            int player1LastCardVal = Utility.getRankValue(p1HandCards.get(index).getRank()); 
+            int player2LastCardVal = Utility.getRankValue(p2HandCards.get(index).getRank()); 
             if (player1LastCardVal > player2LastCardVal) {
                 return "Player 1 wins!";
-            } 
-            if (player2LastCardVal > player1LastCardVal) {
+            } else if (player2LastCardVal > player1LastCardVal) {
                 return "Player 2 wins!";
             }
         }
@@ -40,7 +38,4 @@ public class Game{
     public static void play() { //simulate card playing
     
     }
-        
-        
-
 }

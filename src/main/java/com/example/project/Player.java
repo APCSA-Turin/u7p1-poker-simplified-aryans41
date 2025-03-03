@@ -231,6 +231,18 @@ public class Player{
         }
     }
 
+    public void sortHand() {
+        for (int i = 0; i < hand.size() - 1; i++) {
+            for (int j = i + 1; j < hand.size(); j++) {
+                if (Utility.getRankValue(hand.get(i).getRank()) > Utility.getRankValue(hand.get(j).getRank())) {
+                    Card temp = hand.get(i);
+                    hand.set(i, hand.get(j));
+                    hand.set(j, temp);
+                }
+            }
+        }
+    }
+
     public ArrayList<Integer> findRankingFrequency(){
         ArrayList<Integer> rankingFrequency = new ArrayList<Integer>(); 
         for (int i = 0; i < 13; i++) {
