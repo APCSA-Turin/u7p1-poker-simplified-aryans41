@@ -1,7 +1,9 @@
 package com.example.project;
-import java.util.ArrayList;
+import java.util.ArrayList;  
 
 public class Game{
+    //this algorithm returns a winner between two Player objects based on their handRanks.
+    //if the hand ranks are the same, it returns the player with the highest card in their Hand
     public static String determineWinner(Player p1, Player p2,String p1Hand, String p2Hand,ArrayList<Card> communityCards){
         ArrayList<Card> p1All = p1.getAllCards(); 
         ArrayList<Card> p2All = p2.getAllCards(); 
@@ -16,6 +18,8 @@ public class Game{
         }
     }
 
+    //this static method returns the player with the highest Hand between two player objects 
+    //this method is beneficial when both players have the same Hand, otherewise it will be tied
     public static String HighCard (Player p1, Player p2) {
         p1.sortHand();
         p2.sortHand();
